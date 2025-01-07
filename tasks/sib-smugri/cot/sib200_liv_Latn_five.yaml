@@ -1,0 +1,6 @@
+"dataset_name": "liv_Latn"
+"fewshot_split": "validation"
+"include": "_default_template_yaml"
+"task": "sib200_liv_Latn_cot_fiveshot"
+"test_split": "test"
+"doc_to_text": !function utils.doc_to_text_cot_fiveshot_liv

@@ -1,0 +1,36 @@
+task: xcopa_et_fewshot_gen
+dataset_path: xcopa
+dataset_name: et
+description: "Given a premise and a prompt, select the more meaningful of the two choices.\n\n"
+output_type: generate_until
+test_split: test
+fewshot_config: #do not specify fewshot_split if you take samples with utils 
+  sampler: first_n 
+  samples: !function utils.list_fewshot_samples
+doc_to_text: !function utils.doc_to_text
+doc_to_target: label
+doc_to_choice: !function utils.doc_to_choice
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true
+    ignore_case: true
+    ignore_punctuation: false
+generation_kwargs:
+  until:
+    - "</s>"
+    - "<|end_of_text|>"
+    - "\n\n"
+filter_list:
+  - name: "strict-match"
+    filter:
+      - function: remove_whitespace
+      - function: remove_quotes
+      - function: "take_first"
+  - name: "quotes-match"
+    filter:
+      - function: "regex"
+        regex_pattern: "\"([^\"]*)\""
+      - function: "take_first"
+metadata:
+  version: 1.0

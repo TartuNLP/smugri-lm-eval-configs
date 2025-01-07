@@ -1,0 +1,7 @@
+"dataset_name": "rus_Cyrl-vro_Latn"
+"description": "Translate the text from Russian to Võro.\n\n"
+"doc_to_decontamination_query": "{{sentence_rus_Cyrl}}\t{{sentence_vro_Latn}}"
+"doc_to_target": "{{sentence_vro_Latn}}"
+"doc_to_text": "Russian: {{sentence_rus_Cyrl}}\nVõro:"
+"include": "_default_template_yaml"
+"task": "flores_smugri_rus_Cyrl-vro_Latn"

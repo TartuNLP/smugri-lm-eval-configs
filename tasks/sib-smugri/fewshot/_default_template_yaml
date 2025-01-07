@@ -1,0 +1,23 @@
+dataset_path: tartuNLP/sib-smugri
+output_type: multiple_choice
+should_decontaminate: true
+doc_to_decontamination_query: "{{sentence}}"
+description: "Given a sentence, select the most appropriate category from the following list: science/technology, travel, politics, sports, health, entertainment, geography.\n\n"
+doc_to_text: "Sentence: {{sentence}}\nAnswer:"
+doc_to_choice: ["science/technology", "travel", "politics", "sports", "health", "entertainment", "geography"]
+doc_to_target: "{{['science/technology', 'travel', 'politics', 'sports', 'health', 'entertainment', 'geography'].index(category)}}"
+fewshot_config:
+  sampler: first_n
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+  - metric: acc_norm
+    aggregation: mean
+    higher_is_better: true
+tag:
+  - sib_smugri_fewshot
+metadata:
+  version: 0.0
+dataset_kwargs:
+  trust_remote_code: true

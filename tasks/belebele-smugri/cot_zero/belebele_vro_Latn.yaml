@@ -1,0 +1,5 @@
+"dataset_name": "vro_Latn"
+"fewshot_split": "dev"
+"include": "_cot_zero_smugri_yaml"
+"task": "belebele_vro_Latn_cot_zero"
+"test_split": "test"

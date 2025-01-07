@@ -1,0 +1,6 @@
+"dataset_name": "kpv_Cyrl"
+"fewshot_split": "validation"
+"include": "_default_template_yaml"
+"task": "sib200_kpv_Cyrl_cot_fiveshot"
+"test_split": "test"
+"doc_to_text": !function utils.doc_to_text_cot_fiveshot_kpv

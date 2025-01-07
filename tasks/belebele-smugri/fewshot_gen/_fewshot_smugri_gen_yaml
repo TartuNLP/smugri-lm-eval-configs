@@ -1,0 +1,35 @@
+fewshot_config:
+  sampler: first_n
+output_type: generate_until
+dataset_path: smugri-lm-eval-configs/data/belebele-smugri
+description: "Given a passage and a question, select the correct answer from the given choices.\n\n"
+doc_to_text: "P: {{flores_passage}}\nQ: {{question.strip()}}\nOptions:\nA. {{mc_answer1}}\nB. {{mc_answer2}}\nC. {{mc_answer3}}\nD. {{mc_answer4}}\nAnswer:"
+doc_to_choice: ["A", "B", "C", "D"]
+doc_to_target: "{{[1, 2, 3, 4].index(correct_answer_num)}}"
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true
+    ignore_case: true
+    ignore_punctuation: false
+generation_kwargs:
+  until:
+    - "</s>"
+    - "<|end_of_text|>"
+    - "\n\n"
+filter_list:
+  - name: "strict-match"
+    filter:
+      - function: "regex"
+        regex_pattern: "([ABCD])[.]"
+      - function: "take_first"
+  - name: "first_letter"
+    filter:
+      - function: remove_whitespace
+      - function: "regex"
+        regex_pattern: "^([ABCD])"
+      - function: "take_first"
+tag:
+ - belebele_smugri_fewshot_gen
+metadata:
+  version: 1.0

@@ -1,0 +1,5 @@
+"dataset_name": "kpv_Cyrl"
+"fewshot_split": "dev"
+"include": "_fewshot_smugri_yaml"
+"task": "belebele_kpv_Cyrl_fewshot"
+"test_split": "test"

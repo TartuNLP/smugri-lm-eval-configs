@@ -1,0 +1,5 @@
+"dataset_name": "liv_Latn"
+"fewshot_split": "dev"
+"include": "_fewshot_smugri_yaml"
+"task": "belebele_liv_Latn_fewshot"
+"test_split": "test"
